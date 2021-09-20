@@ -105,7 +105,7 @@ bptest(fit)
 # Studentized deleted residuals vs predicted
 plot(MASS::studres(fit) ~ predict(fit), ylim = c(-3,3), col = "red")
 title("Studentized deleted residual plot")
-abline(h=c(-2, 2), lty=2)
+abline(h = c(-2, 2), lty = 2)
 
 # Transformation
 # Read data online

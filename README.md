@@ -1,5 +1,5 @@
 # STAT522
-Public repository for STAT 522: Biostatistics II @ Loma Linda University School of Public Health
+Public repository of STAT 522: Biostatistics II @ Loma Linda University School of Public Health
 
 ## Course schedule
 
