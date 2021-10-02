@@ -109,7 +109,7 @@ abline(h = c(-2, 2), lty = 2)
 
 # Transformation
 # Read data online
-url <- "http://statweb.lsu.edu/EXSTWeb/StatLab/DataSets/NKNWData/CH03TA08.txt"
+url <- "https://raw.githubusercontent.com/keijioda/KNNL/main/chap03/CH03TA08.txt"
 polya <- read_table(url, col_names = c("age", "plasma", "logplasma"))
 
 # Scatter plot
@@ -117,9 +117,7 @@ plot(plasma ~ age, data = polya)
 
 # Regression and diagnostic plots
 fit1 <- lm(plasma ~ age, data = polya)
-par(mfrow = c(2, 2))
-  plot(fit1)
-par(mfrow = c(1, 1))
+resid_panel(fit1, plots = "all")
 
 # Box-Cox procedure
 bc <- MASS::boxcox(plasma ~ age, data = polya) %>% 
@@ -136,14 +134,9 @@ bc %>%
 
 # Regression on log Y
 fit2 <- lm(log(plasma) ~ age, data = polya)
-par(mfrow = c(2, 2))
-  plot(fit2)
-par(mfrow = c(1, 1))
+resid_panel(fit2, plots = "all")
 
 # Regression on Y ^ (-.5)
 fit3 <- lm(-1/sqrt(plasma) ~ age, data = polya)
 summary(fit3)
-
-par(mfrow = c(2, 2))
-  plot(fit3)
-par(mfrow = c(1, 1))
+resid_panel(fit3, plots = "all")

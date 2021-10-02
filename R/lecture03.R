@@ -5,8 +5,8 @@
 library(tidyverse)
 
 # Fitness data
-# setwd("M:\\Teaching\\Stat\\Stat522\\data")
-fitness <- read.table("./data/fitness.txt", header = TRUE)
+url <- "https://raw.githubusercontent.com/keijioda/STAT522/main/data/fitness.txt"
+fitness <- read.table(url, header = TRUE)
 summary(fitness)
 
 # Descriptives
