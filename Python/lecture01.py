@@ -92,18 +92,20 @@ def r_ci(r, n, alpha = 0.05):
 r_ci(corr_matrix.iat[0, 1], n = 16)
 
 # Regression diagnostics
-# Residual plot against x
-residuals = fit.resid
-sns.scatterplot(x = fit.predict(), y = residuals)
-plt.xlabel("Predicted value")
-plt.ylabel("Residual")
-plt.axhline(0, ls='--')
-plt.show()
-plt.clf()
+def resid_plot(fit):
+  plt.subplot(2, 2, 1)
+  sns.scatterplot(x = fit.predict(), y = fit.resid)
+  plt.xlabel("Predicted value")
+  plt.ylabel("Residual")
+  plt.axhline(0, ls='--')
+  plt.subplot(2, 2, 2)
+  stats.probplot(fit.resid, dist = "norm", plot = plt)
+  plt.subplot(2, 2, 3)
+  sns.histplot(fit.resid)
+  plt.show()
+  return
 
-# Normal probability plot of residuals
-stats.probplot(residuals, dist = "norm", plot = plt)
-plt.show()
+resid_plot(fit)
 plt.clf()
 
 # Normality test by Shapiro-Wilk
@@ -141,15 +143,6 @@ plt.clf()
 
 # Regression and diagnostic plots
 fit1 = smf.ols("plasma ~ age", data = polya).fit()
-
-def resid_plot(fit):
-  sns.scatterplot(x = fit.predict(), y = fit.resid)
-  plt.xlabel("Predicted value")
-  plt.ylabel("Residual")
-  plt.axhline(0, ls='--')
-  plt.show()
-  return
-
 resid_plot(fit1)
 plt.clf()
 
@@ -171,3 +164,4 @@ plt.clf()
 polya["invY"] = -1 / np.sqrt(polya["plasma"])
 fit3 = smf.ols("invY ~ age", data = polya).fit()
 resid_plot(fit3)
+plt.clf()
