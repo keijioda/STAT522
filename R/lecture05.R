@@ -3,20 +3,11 @@
 # Interaction
 
 library(tidyverse)
-library(magrittr)
 
 # Depression data
-# Download a zip file, unzip, and read data
-url <- "http://higheredbcs.wiley.com/legacy/college/daniel/0471456543/csv/ch11_sec02.zip"
-
-temp <- tempfile() %T>%
-  download.file(url, .)
-
-depress <- read_csv(unz(temp, "EXA_C11_S02_03.csv"))
-unlink(temp)
-
-# Change varirable names to lower cases
-names(depress) <- tolower(names(depress))
+url <- "https://raw.githubusercontent.com/keijioda/Daniel/main/chap11/EXA_C11_S02_03.csv"
+depress <- read_csv(url) %>% 
+  rename_with(tolower)
 depress
 
 # Frequency table on treatment method

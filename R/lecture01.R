@@ -3,20 +3,12 @@
 # Simple Linear Regression / correlation
 
 library(tidyverse)
-library(magrittr)
 
 # Glucose data
-# Download a zip file, unzip, and read data
-url <- "http://higheredbcs.wiley.com/legacy/college/daniel/0471456543/csv/ch09_rev.zip"
-
-temp <- tempfile() %T>% 
-  download.file(url, .)
-  
-gluc <- read_csv(unz(temp, "REV_C09_23.csv"))
-unlink(temp)
-
 # Change varirable names to lower cases
-names(gluc) <- tolower(names(gluc))
+url <- "https://raw.githubusercontent.com/keijioda/Daniel/main/chap09/REV_C09_23.csv"
+gluc <- read_csv(url) %>% 
+  rename_with(tolower)
 gluc
 
 # Scatter plot

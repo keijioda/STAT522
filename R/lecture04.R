@@ -3,20 +3,12 @@
 # Multiple Linear Regression III
 
 library(tidyverse)
-library(magrittr)
 
 # KBI data
-# Download a zip file, unzip, and read data
-url <- "http://higheredbcs.wiley.com/legacy/college/daniel/0471456543/csv/ch10_sec03.zip"
-
-temp <- tempfile() %T>% 
-  download.file(url, .)
-
-kbi <- read_csv(unz(temp, "EXR_C10_S03_02.csv"))
-unlink(temp)
-
 # Change varirable names to lower cases
-names(kbi) <- tolower(names(kbi))
+url <- "https://raw.githubusercontent.com/keijioda/Daniel/main/chap10/EXR_C10_S03_02.csv"
+kbi <- read_csv(url) %>% 
+  rename_with(tolower)
 kbi
 
 # Descriptives
@@ -162,17 +154,10 @@ baby %>%
   group_map(~broom::tidy(lm(Wgt ~ Gest, data = .x)))
   
 # Depression data
-# Download a zip file, unzip, and read data
-url <- "http://higheredbcs.wiley.com/legacy/college/daniel/0471456543/csv/ch11_sec02.zip"
-
-temp <- tempfile() %T>% 
-  download.file(url, .)
-
-depress <- read_csv(unz(temp, "EXA_C11_S02_03.csv"))
-unlink(temp)
-
 # Change varirable names to lower cases
-names(depress) <- tolower(names(depress))
+url <- "https://raw.githubusercontent.com/keijioda/Daniel/main/chap11/EXA_C11_S02_03.csv"
+depress <- read_csv(url) %>% 
+  rename_with(tolower)
 depress
 
 # Frequency table on treatment method

@@ -3,19 +3,12 @@
 # Multiple Linear Regression I
 
 library(tidyverse)
-library(magrittr)
 
 # CDA data
-url <- "http://higheredbcs.wiley.com/legacy/college/daniel/0471456543/csv/ch10_sec03.zip"
-
-temp <- tempfile() %T>% 
-  download.file(url, .)
-
-cda <- read_csv(unz(temp, "EXA_C10_S03_01.csv"))
-unlink(temp)
-
 # Change varirable names to lower cases
-names(cda) <- tolower(names(cda))
+url <- "https://raw.githubusercontent.com/keijioda/Daniel/main/chap10/EXA_C10_S03_01.csv"
+cda <- read_csv(url) %>% 
+  rename_with(tolower)
 cda
 
 # Descriptives
