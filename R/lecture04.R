@@ -46,13 +46,8 @@ summary(fit)
 anova(fit)
 
 # Exercise and immune data
-url <- "https://media.pearsoncmg.com/ph/esm/statistics_datasets/menden_seccourse7e/Text.zip"
-
-temp <- tempfile() %T>% 
-  download.file(url, .)
-
-igg <- read_table(unz(temp, "Text/Exercises&Examples/AEROBIC.txt"))
-unlink(temp)
+url <- "https://raw.githubusercontent.com/keijioda/STAT522/main/data/aerobic.txt"
+igg <- read_table(url)
 
 # Change varirable names to lower cases
 names(igg) <- tolower(names(igg))
@@ -76,21 +71,8 @@ igg %>%
   summary()
 
 # Power cell data
-
-pcell <- tribble(
-  ~Cycles, ~ChgRate, ~Celsius,
-  150,  0.6,  10,
-   86,  1.0,  10,
-   49,  1.4,  10,
-  288,  0.6,  20,
-  157,  1.0,  20,
-  131,  1.0,  20,
-  184,  1.0,  20,
-  109,  1.4,  20,
-  279,  0.6,  30,
-  235,  1.0,  30,
-  224,  1.4,  30
-)
+url <- "https://raw.githubusercontent.com/keijioda/KNNL/main/chap08/CH08TA01.txt" 
+pcell <- read_table(url, col_names = c("Cycles", "ChgRate", "Celsius"))
 pcell
 
 # Check means
@@ -149,7 +131,7 @@ with(newdat, surface3d(unique(ChgRate), unique(Celsius), Cycles,
                        alpha = 0.3, front = "line", back = "line"))
 
 # Birthweigth and mother's smoking data
-url <- "https://online.stat.psu.edu/onlinecourses/sites/stat501/files/data/birthsmokers.txt"
+url <- "https://raw.githubusercontent.com/keijioda/STAT522/main/data/birthsmokers.txt"
 baby <- read.table(url, header = TRUE)
 
 # Recode smoke

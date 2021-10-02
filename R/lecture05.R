@@ -62,8 +62,8 @@ anova(model3, model1)
 
 # Exercise and weight loss data
 # Read data in CSV format
-# setwd("M:\\Teaching\\Stat\\Stat522\\Data")
-exer <- read_csv("./data/WtLoss.csv", col_names = c("prog", "hours", "female", "effort", "loss", "satisf"))
+url <- "https://raw.githubusercontent.com/keijioda/STAT522/main/data/WtLoss.csv"
+exer <- read_csv(url, col_names = c("prog", "hours", "female", "effort", "loss", "satisf"))
 exer
 
 # Label program variable, set the reference to reading

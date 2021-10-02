@@ -2,11 +2,10 @@
 # STAT 522: Lecture 6
 # Model specification & LASSO
 
-# setwd("M:\\Teaching\\Stat\\Stat522\\Data")
-
 # Surgical unit data
+url <- "https://raw.githubusercontent.com/keijioda/STAT522/main/data/Surgical.txt"
 vnames <- c("clot", "prognost", "enzyme", "liver", "age", "female", "alcohol", "time", "logtime")
-surg <- read_table("./data/Surgical.txt", col_names = vnames)
+surg <- read_table(url, col_names = vnames)
 
 # Scatterplot matrix
 library(GGally)

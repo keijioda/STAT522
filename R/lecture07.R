@@ -3,8 +3,8 @@
 # MLR diagnostics
 
 # Fitness data
-# setwd("M:\\Teaching\\Stat\\Stat522\\data")
-fitness <- read.table("./data/fitness.txt", header = TRUE)
+url <- "https://raw.githubusercontent.com/keijioda/STAT522/main/data/fitness.txt"
+fitness <- read.table(url, header = TRUE)
 summary(fitness)
 
 # Descriptives
@@ -26,7 +26,7 @@ library(car)
 avPlots(model, layout = c(2, 3))
 
 # Body fat data
-url <- "http://statweb.lsu.edu/EXSTWeb/StatLab/DataSets/NKNWData/CH07TA01.txt"
+url <- "https://raw.githubusercontent.com/keijioda/KNNL/main/chap07/CH07TA01.txt"
 bfat <- read_table(url, col_names = c("triceps", "thigh", "midarm", "fat"))
 
 # Fit regression
