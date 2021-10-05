@@ -46,19 +46,20 @@ out
 
 # Various model
 # X1 only
-# model1 <- lm(Oxygen ~ Age, data = fitness)
+model1 = smf.ols("Oxygen ~ Age", data = fitness).fit()
 
 # Add X2 over X1
-# model2 <- update(model1, ~ . + Weight)
+model2 = smf.ols("Oxygen ~ Age + Weight", data = fitness).fit()
 
 # Keep adding predictors
-# model3 <- update(model2, ~ . + RunTime)
-# model4 <- update(model3, ~ . + RestPulse)
-# model5 <- update(model4, ~ . + RunPulse)
-# model6 <- update(model5, ~ . + MaxPulse)
+model3 = smf.ols("Oxygen ~ Age + Weight + RunTime", data = fitness).fit()
+model4 = smf.ols("Oxygen ~ Age + Weight + RunTime + RestPulse", data = fitness).fit()
+model5 = smf.ols("Oxygen ~ Age + Weight + RunTime + RestPulse + RunPulse", data = fitness).fit()
+model6 = smf.ols("Oxygen ~ Age + Weight + RunTime + RestPulse + RunPulse + MaxPulse", data = fitness).fit()
 
 # General linear F-tests
-# anova(model1, model2)
-# anova(model2, model4)
-# anova(model3, model4)
-# anova(model1, model4)
+from statsmodels.stats.anova import anova_lm
+anova_lm(model1, model2)
+anova_lm(model2, model4)
+anova_lm(model3, model4)
+anova_lm(model1, model4)
