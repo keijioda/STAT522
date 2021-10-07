@@ -130,7 +130,6 @@ def effectplot(fit, effort, ylim = [-10, 10]):
   plt.ylabel("Loss")
   plt.ylim(ylim)
   plt.title("effort = %i" %effort)
-  plt.show()
   return
 
 plt.subplot(1, 3, 1)
@@ -139,6 +138,7 @@ plt.subplot(1, 3, 2)
 effectplot(model2, effort = 30, ylim = [-30, 60])
 plt.subplot(1, 3, 3)
 effectplot(model2, effort = 40, ylim = [-30, 60])
+plt.show()
 plt.clf()
 
 # Interactions with polynomial terms
